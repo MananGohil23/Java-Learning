@@ -69,6 +69,19 @@ class LinkedList {
         }
     }
 
+    public void reverse() {
+        Node current = head;
+        Node prev = null;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+
     public void display() {
         Node current = head;
         while (current != null) {
@@ -85,6 +98,7 @@ class LinkedList {
         list.prepend(0);
         list.insert(4, 2);
         list.remove(3);
-        list.display(); // Output: 0 1 4 2 3
+        list.reverse();
+        list.display(); // Output: 2 4 1 0
     }
 }
