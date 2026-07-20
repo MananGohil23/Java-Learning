@@ -30,6 +30,39 @@ class LinkedList {
         head = newNode;
     }
 
+    public void insert(int data, int position) {
+        Node newNode = new Node(data);
+        if(position == 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        Node current = head;
+        for(int i = 0; i<position-1 && current !=null; i++) {
+            current = current.next;
+        }
+        if(current != null) {
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+    }
+
+    public void remove(int data) {
+        if(head == null) return;
+        if(head.data == data) {
+            head = head.next;
+            return;
+        }
+        Node current = head;
+        while(current.next != null) {
+            if(current.next.data == data) {
+                current.next = current.next.next;
+                return;
+            }
+            current = current.next;
+        }
+    }
+
     public void display() {
         Node current = head;
         while (current != null) {
@@ -44,6 +77,8 @@ class LinkedList {
         list.append(2);
         list.append(3);
         list.prepend(0);
-        list.display(); // Output: 0 1 2 3
+        list.insert(4, 2);
+        list.remove(3);
+        list.display(); // Output: 0 1 4 2 3
     }
 }
