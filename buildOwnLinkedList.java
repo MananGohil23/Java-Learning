@@ -4,10 +4,12 @@ class LinkedList {
     static class Node {
         int data;
         Node next;
+        Node previous;
 
         Node(int d) {
             data = d;
             next = null;
+            previous = null;
         }
     }
 
@@ -22,11 +24,15 @@ class LinkedList {
             current = current.next;
         }
         current.next = newNode;
+        newNode.previous = current;
     }
 
     public void prepend(int data) {
         Node newNode = new Node(data);
         newNode.next = head;
+        if (head != null) {
+            head.previous = newNode;
+        }
         head = newNode;
     }
 
