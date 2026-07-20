@@ -11,7 +11,7 @@ class LinkedList {
         }
     }
 
-    public void insert(int data) {
+    public void append(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -24,6 +24,12 @@ class LinkedList {
         current.next = newNode;
     }
 
+    public void prepend(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
     public void display() {
         Node current = head;
         while (current != null) {
@@ -34,9 +40,10 @@ class LinkedList {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
-        list.insert(1);
-        list.insert(2);
-        list.insert(3);
-        list.display(); // Output: 1 2 3
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.prepend(0);
+        list.display(); // Output: 0 1 2 3
     }
 }
